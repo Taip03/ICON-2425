@@ -41,12 +41,6 @@ results_df = evaluate_models(models, train_df, test_df, train_mod, test_mod, tra
 print("\n=== RISULTATI SU TEST (Raw vs Moderato vs Avanzato) ===")
 print(results_df.to_string(index=False))
 
-# 7) CONFUSION MATRIX
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-for name, mdl in models.items():
-    cm_raw = mean_confusion_matrix(mdl, train_df.drop(columns=["target"]), train_df["target"], cv)
-    print(f"\n=== Confusion Matrix Media ({name}, Raw) ===\n{cm_raw}")
-
 # 8) EXPORT
 export_results(results_df, cv_df)
 
