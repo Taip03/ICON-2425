@@ -41,10 +41,3 @@ def evaluate_models(models, train_df, test_df, train_mod, test_mod, train_avz, t
         })
     return pd.DataFrame(rows).sort_values("Model").reset_index(drop=True)
 
-def mean_confusion_matrix(model, X, y, cv):
-    cms = []
-    for tr_idx, te_idx in cv.split(X, y):
-        model.fit(X.iloc[tr_idx], y.iloc[tr_idx])
-        preds = model.predict(X.iloc[te_idx])
-        cms.append(confusion_matrix(y.iloc[te_idx], preds, labels=[0,1]))
-    return np.mean(cms, axis=0).astype(int)
