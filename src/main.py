@@ -4,7 +4,7 @@ from utils import build_label_dict
 from mapping import build_symptom_mapping, build_category_classes, build_feature_to_category
 from enrichment import enrich_with_ontology
 from models import models
-from evaluation import cross_validate, evaluate_models, mean_confusion_matrix
+from evaluation import cross_validate, evaluate_models
 from export_results import export_results
 from sklearn.model_selection import StratifiedKFold
 
